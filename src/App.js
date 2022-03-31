@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Home from './routes/Home';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Detail from './routes/Detail';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        {/* 한 번에 하나의 Route만 렌더링하기 위해 Switch */}
+        <Route path="/movie/:id">
+            <Detail />
+          </Route>
+
+          <Route path="/">
+            <Home />
+          </Route>
+      </Switch>
+    </Router>
   );
 }
 
