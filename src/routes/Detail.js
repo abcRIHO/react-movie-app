@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import styles from './Detail.module.css';
 
 const Detail = () => {
     const [loading, setLoading] = useState(true);
@@ -21,15 +22,19 @@ const Detail = () => {
 
     return (
         <div>
-            {loading ? <h1>Loading Detail..</h1> : 
-            <div>
-                <h1>{info.title}</h1>
-                <img src={info.large_cover_image} alt={info.title}/>
-                <h3>RATING: {info.rating}</h3>
-                <p>{info.description_full}</p>
+            {loading ? 
+                <div className={styles.loader}>
+                    <span>Loading...</span>
+                </div> : 
+            <div className={styles.info_style}>
+                <h1 className={styles.info_title}>{info.title}</h1>
+                <img className={styles.info_image} src={info.large_cover_image} alt={info.title}/>
+                <h3 className={styles.info_title}>RATING: {info.rating}</h3>
+                <p className={styles.info_title}>{info.description_full}</p>
 
-                <Link to="/">HOME</Link>
-            </div>}
+                <Link to="/" className={styles.info_home}>HOME</Link>
+            </div>
+            }
         </div>
     )
 }
